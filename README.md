@@ -1,1 +1,0 @@
-# midd-teaching.github.io
