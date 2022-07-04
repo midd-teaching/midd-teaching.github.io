@@ -1,7 +1,49 @@
 ---
+title: "midd-teaching.github.io"
 output: github_document
 ---
 
-# midd-teaching.github.io
 
-Site here soon
+My timeline
+
+```{r}
+#| label: timeline
+#| echo: false
+#| warning: false
+#| message: false
+library("tidyverse")
+
+tl <- tribble(
+  ~"year", ~"role", ~"format", 
+  2008, "ma", "in-person", 
+  2009, "ma", "in-person", 
+  2010, "fr", "in-person", 
+  2011, "fr", "in-person", 
+  2012, "bili", "in-person", 
+  2013, "bili", "in-person", 
+  2014, "profe", "in-person", 
+  2015, "profe", "in-person", 
+  2016,  NA, "in-person", 
+  2017, "profe", "in-person", 
+  2018, "profe", "in-person", 
+  2019,  NA, "in-person", 
+  2020, "profe", "online", 
+  2021, "profe", "in-person", 
+  2022, "profe", "in-person", 
+)
+
+knitr::kable(tl)
+```
+
+```{r}
+#| label: details
+#| echo: false
+
+tl %>% 
+  group_by(role) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(role = replace_na(role, "Didn't attend")) %>% 
+  knitr::kable()
+```
+
